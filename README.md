@@ -31,7 +31,7 @@ cp config/default.json config/development.json
 ```
 
 Update the following values in `config/development.json`
- - "c_user": [your Facebook user id](http://findmyfbid.com/)
+ - "c_user": [your numeric Facebook user id](http://findmyfbid.com/)
  -  "xs": [xs value from Facebook cookie](https://gist.github.com/sqren/0e4563f258c9e85e4ae1)
  - "appId": [Facebook App Id](https://gist.github.com/sqren/1ac0f5d316fcbd46d8c1)
 
@@ -49,6 +49,8 @@ npm run webpack
 
 ## Starting
 
+You need to have two processes running simultaniously: the scraper and the webserver. Therefore, you must run the following two commands in separate windows/tabs.
+
 **Start scraping**
 
 *This will run continously, polling Facebook every 10 minutes. Keep it running for as long as you want to track sleep.*
@@ -61,10 +63,7 @@ npm run scrape
 npm start
 ```
 
-See the result in the browser
-```
-http://localhost:3000
-```
+See the result in the browser: [http://localhost:3000](http://localhost:3000)
 
 #Troubleshooting
 
@@ -93,6 +92,19 @@ rm -rf node_modules
 npm install
 npm run webpack
 ```
+
+**ReferenceError: Promise is not defined**
+
+Update Node.js to the latest stable version of the branch you are on (v5.7.1, v4.3.2 or v0.12.11). After that rebuild dependencies:
+```
+rm -rf node_modules
+npm install
+npm run webpack
+```
+
+**Where is the data stored?**
+
+You can find the data in JSON-format here: `src/server/services/db.json`.
 
 **Other issues**
 
